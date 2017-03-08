@@ -104,7 +104,7 @@ public class MainActivity extends Activity {
     public void detail(int position) {
 
 //        Intent intent = new Intent(this, DetailActivity.class);
-        Log.d("tag", listView.getItemAtPosition(position).getClass().getResource());
+        Log.d("tag", listView.getAdapter().toString());
 //        intent.putExtra("name", listView.getItemAtPosition(position).getClass().getName());
 //        intent.putExtra("address", listView.getItemAtPosition(position).getClass().getAddress());
 //        intent.putExtra("pr", listView.getItemAtPosition(position).getClass().getPr().getPr_Long());

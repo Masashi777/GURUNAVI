@@ -1,28 +1,25 @@
 package com.lifeistech.android.gurunavi_sample;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentActivity;
-import android.support.v4.media.session.MediaControllerCompat;
+import android.support.design.widget.AppBarLayout;
+import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
-import android.widget.FrameLayout;
-import android.widget.ImageView;
+import android.support.v7.widget.Toolbar;
+import android.view.View;
 import android.widget.TextView;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapFragment;
-import com.google.android.gms.maps.MapView;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
-import com.squareup.picasso.Picasso;
 
-public class DetailActivity extends Activity implements OnMapReadyCallback {
+public class ScrollingActivity extends AppCompatActivity implements OnMapReadyCallback {
 
-    ImageView imageView;
+    AppBarLayout appBarLayout;
 
     TextView nameText;
     TextView addressText;
@@ -37,15 +34,26 @@ public class DetailActivity extends Activity implements OnMapReadyCallback {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_detail);
+        setContentView(R.layout.activity_scrolling);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+
+        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+                        .setAction("Action", null).show();
+            }
+        });
 
         //ひもづけ
-        imageView = (ImageView) findViewById(R.id.imageView);
+        appBarLayout =(AppBarLayout) findViewById(R.id.app_bar);
         nameText = (TextView) findViewById(R.id.nameText);
         addressText = (TextView) findViewById(R.id.addressText);
         prText = (TextView) findViewById(R.id.prText);
 
-        MapFragment mapFragment = (MapFragment) getFragmentManager().findFragmentById(R.id.fragment);
+        MapFragment mapFragment = (MapFragment) getFragmentManager().findFragmentById(R.id.mapFragment);
         mapFragment.getMapAsync(this);
 
         //インテントから取得
@@ -59,9 +67,10 @@ public class DetailActivity extends Activity implements OnMapReadyCallback {
         addressText.setText(address);
         prText.setText(pr);
 
-        //imageView.setImageResource(R.drawable.mig);
-        Picasso.with(this).load("http://i.imgur.com/DvpvklR.png").into(imageView);
+        appBarLayout.setBackgroundResource(R.drawable.mig);
 
+        //imageView.setImageResource(R.drawable.mig);
+        //Picasso.with(this).load("http://i.imgur.com/DvpvklR.png").into(imageView);
 
     }
 
