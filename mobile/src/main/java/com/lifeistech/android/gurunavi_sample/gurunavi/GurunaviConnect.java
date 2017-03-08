@@ -8,6 +8,9 @@ import java.io.Serializable;
 
 public abstract class GurunaviConnect implements Serializable {
 
+    public static final String AREASEARCH_DOMAIN = "https://api.gnavi.co.jp/master/AreaSearchAPI/20150630";
+    public static final String PREFSEARCH_DOMAIN = "https://api.gnavi.co.jp/master/PrefSearchAPI/20150630";
+
     public static final String REQUEST_DOMAIN = "https://api.gnavi.co.jp/RestSearchAPI/20150630";
 
 
@@ -18,6 +21,11 @@ public abstract class GurunaviConnect implements Serializable {
         public void onFailed(String error);
 
     }
+
+
+    public abstract void areaSearch(final String keyId, final String format, final String lang, final GurunaviSearchListener listener);
+
+    public abstract void prefSearch(final String keyId, final String format, final String lang, final GurunaviSearchListener listener);
 
     public abstract void search(final String keyId, final String format, final String freeWord, final GurunaviSearchListener listener);
 

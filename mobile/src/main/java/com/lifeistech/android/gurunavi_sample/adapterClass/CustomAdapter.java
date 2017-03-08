@@ -1,4 +1,4 @@
-package com.lifeistech.android.gurunavi_sample;
+package com.lifeistech.android.gurunavi_sample.adapterClass;
 
 import android.content.Context;
 import android.graphics.Color;
@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
+import com.lifeistech.android.gurunavi_sample.R;
 import com.lifeistech.android.gurunavi_sample.gurunavi.GurunaviModel.Response.apiVersion.Rest;
 
 import java.util.ArrayList;

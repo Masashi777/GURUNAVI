@@ -9,6 +9,7 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.google.gson.Gson;
+import com.lifeistech.android.gurunavi_sample.adapterClass.CustomAdapter;
 import com.lifeistech.android.gurunavi_sample.gurunavi.Gurunavi;
 import com.lifeistech.android.gurunavi_sample.gurunavi.GurunaviConnect;
 import com.lifeistech.android.gurunavi_sample.gurunavi.GurunaviModel.GurunaviResponse;
@@ -66,7 +67,6 @@ public class MainActivity extends Activity {
             @Override
             public void onSuccess(String result) {
 
-
                 //json中の{}を""に変換
                 String regex = "\\{\\}";
                 Pattern p = Pattern.compile(regex);
@@ -103,12 +103,12 @@ public class MainActivity extends Activity {
 
     public void detail(int position) {
 
-//        Intent intent = new Intent(this, DetailActivity.class);
+        Intent intent = new Intent(this, ScrollingActivity.class);
         Log.d("tag", listView.getAdapter().toString());
 //        intent.putExtra("name", listView.getItemAtPosition(position).getClass().getName());
 //        intent.putExtra("address", listView.getItemAtPosition(position).getClass().getAddress());
 //        intent.putExtra("pr", listView.getItemAtPosition(position).getClass().getPr().getPr_Long());
-//        startActivity(intent);
+        startActivity(intent);
         Log.d("TAG", "ID" + position);
 
     }
