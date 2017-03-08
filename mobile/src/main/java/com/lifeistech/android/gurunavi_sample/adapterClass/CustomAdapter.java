@@ -6,10 +6,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.lifeistech.android.gurunavi_sample.MainActivity;
 import com.lifeistech.android.gurunavi_sample.R;
 import com.lifeistech.android.gurunavi_sample.gurunavi.GurunaviModel.Response.apiVersion.Rest;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
@@ -47,15 +50,26 @@ public class CustomAdapter extends ArrayAdapter<Rest> {
             convertView = LayoutInflater.from(getContext()).inflate(R.layout.rest_list, parent, false);
 
             viewHolder = new ViewHolder();
+            viewHolder.imageView = (ImageView) convertView.findViewById(R.id.imageView);
+
             viewHolder.name = (TextView) convertView.findViewById(R.id.nameText);
             viewHolder.name.setTextColor(Color.BLACK);
+
+            viewHolder.access = (TextView) convertView.findViewById(R.id.accessText);
+            viewHolder.budget = (TextView) convertView.findViewById(R.id.budgetText);
+            viewHolder.pr = (TextView) convertView.findViewById(R.id.prText);
+
             viewHolder.address = (TextView) convertView.findViewById(R.id.addressText);
             viewHolder.address.setTextColor(Color.BLACK);
 
             convertView.setTag(viewHolder);
         }
 
+        Picasso.with(getContext()).load(item.getImageURL().getShopImage1()).into(viewHolder.imageView);
         viewHolder.name.setText(item.getName());
+        viewHolder.access.setText(item.getAccess().getStation() + " " + item.getAccess().getStationExit() + " 徒歩 " + item.getAccess().getWalk() + "分");
+        viewHolder.budget.setText("平均予算 " + item.getBudget() + " ハーティー予算 " + item.getParty());
+        viewHolder.pr.setText(item.getPr().getPrShort());
         viewHolder.address.setText(item.getAddress());
 
         return convertView;
@@ -65,7 +79,12 @@ public class CustomAdapter extends ArrayAdapter<Rest> {
 
 
     static class ViewHolder {
+        ImageView imageView;
+
         TextView name;
+        TextView access;
+        TextView budget;
+        TextView pr;
         TextView address;
     }
 

@@ -7,7 +7,9 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -16,20 +18,32 @@ import com.google.android.gms.maps.MapFragment;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.lifeistech.android.gurunavi_sample.gurunavi.GurunaviModel.Response.apiVersion.Rest;
+import com.squareup.picasso.Picasso;
+
+import static java.lang.Double.parseDouble;
 
 public class ScrollingActivity extends AppCompatActivity implements OnMapReadyCallback {
 
     AppBarLayout appBarLayout;
 
+    Rest rest;
+
+
+    ImageView shopImage1;
+    ImageView shopImage2;
+
     TextView nameText;
     TextView addressText;
+
+    TextView budgetText;
+    TextView opentimeText;
+    TextView accessText;
+
     TextView prText;
 
     private GoogleMap mMap;
-
-    private String name;
-    private String address;
-    private String pr;
+    private LatLng latLng;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,9 +62,18 @@ public class ScrollingActivity extends AppCompatActivity implements OnMapReadyCa
         });
 
         //ひもづけ
-        appBarLayout =(AppBarLayout) findViewById(R.id.app_bar);
+        appBarLayout = (AppBarLayout) findViewById(R.id.app_bar);
+
+        shopImage1 = (ImageView) findViewById(R.id.shopImage1);
+        shopImage2 = (ImageView) findViewById(R.id.shopImage2);
+
         nameText = (TextView) findViewById(R.id.nameText);
         addressText = (TextView) findViewById(R.id.addressText);
+
+        budgetText = (TextView) findViewById(R.id.budgetText);
+        opentimeText = (TextView) findViewById(R.id.opentimeText);
+        accessText = (TextView) findViewById(R.id.accessText);
+
         prText = (TextView) findViewById(R.id.prText);
 
         MapFragment mapFragment = (MapFragment) getFragmentManager().findFragmentById(R.id.mapFragment);
@@ -58,19 +81,26 @@ public class ScrollingActivity extends AppCompatActivity implements OnMapReadyCa
 
         //インテントから取得
         Intent intent = getIntent();
-        name = intent.getStringExtra("name");
-        address = intent.getStringExtra("address");
-        pr = intent.getStringExtra("pr");
+        rest = (Rest) intent.getSerializableExtra("rest");
 
         //それぞれに表示
-        nameText.setText(name);
-        addressText.setText(address);
-        prText.setText(pr);
+        nameText.setText(rest.getName());
+        addressText.setText(rest.getAddress());
 
-        appBarLayout.setBackgroundResource(R.drawable.mig);
+        budgetText.setText("平均予算 " + rest.getBudget() + " パーティー " + rest.getParty() + " ランチ " + rest.getLunch());
+        opentimeText.setText(rest.getOpentime());
+        accessText.setText(rest.getAccess().getStation() + rest.getAccess().getStationExit() + rest.getAccess().getWalk());
 
-        //imageView.setImageResource(R.drawable.mig);
-        //Picasso.with(this).load("http://i.imgur.com/DvpvklR.png").into(imageView);
+        prText.setText(rest.getPr().getPrShort());
+
+        Picasso.with(this).load(rest.getImageURL().getShopImage1()).into(shopImage1);
+
+        if (rest.getImageURL().getShopImage2().length() != 0) {
+            Picasso.with(this).load(rest.getImageURL().getShopImage2()).into(shopImage2);
+        } else {
+            //ShopImage2がないときは何もしない
+        }
+
 
     }
 
@@ -78,10 +108,10 @@ public class ScrollingActivity extends AppCompatActivity implements OnMapReadyCa
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
 
-        LatLng latLng = new LatLng(35, 135);
-        mMap.addMarker(new MarkerOptions().title("akashi").position(latLng));
+        latLng = new LatLng(parseDouble(rest.getLatitude()), parseDouble(rest.getLongitude()));
+        mMap.addMarker(new MarkerOptions().title(rest.getName()).position(latLng));
 
-        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, 10));
+        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, 15));
     }
 
 }

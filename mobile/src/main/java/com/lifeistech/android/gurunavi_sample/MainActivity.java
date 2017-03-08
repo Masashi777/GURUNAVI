@@ -27,7 +27,7 @@ public class MainActivity extends Activity {
     static ArrayList<Rest> rests = new ArrayList<Rest>();
     private final String keyId = "9ffa01190536dce72adf62e5fba762be";
     private final String format = "json";
-    private final String freeword = "喫茶";
+    private String freeword;
 
 
     //コネクタ
@@ -42,9 +42,9 @@ public class MainActivity extends Activity {
 
         listView = (ListView)findViewById(R.id.listView);
 
-//        Intent intent = getIntent();
-//        freeword = intent.getStringExtra("freeword");
-//        Log.d("TAG", freeword);
+        Intent intent = getIntent();
+        freeword = intent.getStringExtra("freeword");
+        Log.d("TAG", freeword);
 
         search();
 
@@ -104,11 +104,12 @@ public class MainActivity extends Activity {
     public void detail(int position) {
 
         Intent intent = new Intent(this, ScrollingActivity.class);
-        Log.d("tag", listView.getAdapter().toString());
-//        intent.putExtra("name", listView.getItemAtPosition(position).getClass().getName());
-//        intent.putExtra("address", listView.getItemAtPosition(position).getClass().getAddress());
-//        intent.putExtra("pr", listView.getItemAtPosition(position).getClass().getPr().getPr_Long());
+        Rest rest = (Rest) listView.getAdapter().getItem(position);
+        intent.putExtra("rest", rest);
+        intent.setAction(Intent.ACTION_VIEW);
+        Log.d("tag", rest.getImageURL().getShopImage1());
         startActivity(intent);
+
         Log.d("TAG", "ID" + position);
 
     }

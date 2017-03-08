@@ -2,13 +2,14 @@ package com.lifeistech.android.gurunavi_sample.gurunavi.GurunaviModel.Response.a
 
 import com.google.gson.annotations.SerializedName;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
  * Created by Masashi Hamaguchi on 2017/02/28.
  */
 
-public class Code {
+public class Code implements Serializable {
     public String areacode;
     public String areaname;
     public String prefcode;

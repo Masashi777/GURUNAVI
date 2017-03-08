@@ -1,10 +1,12 @@
 package com.lifeistech.android.gurunavi_sample.gurunavi.GurunaviModel.Response.apiVersion.rest;
 
+import java.io.Serializable;
+
 /**
  * Created by Masashi Hamaguchi on 2017/02/28.
  */
 
-public class CouponURL {
+public class CouponURL implements Serializable {
     public String pc;
     public String mobile;
 

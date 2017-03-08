@@ -17,23 +17,23 @@ public class GurunaviResponse {
     @SerializedName("@attributes")
     public ApiVersion attributes;
     @SerializedName("total_hit_count")
-    public int totalHitCount;
+    public String totalHitCount;
     @SerializedName("hit_per_page")
-    public int hitPerPage;
+    public String hitPerPage;
     @SerializedName("page_offset")
-    public int pageOffset;
+    public String pageOffset;
     @SerializedName("rest")
     public List<Rest> restList;
 
 
-    public GurunaviResponse(ApiVersion attributes, int totalHitCount, int hitPerPage, int pageOffset, List<Rest> restList) {
-
+    public GurunaviResponse(ApiVersion attributes, String totalHitCount, String hitPerPage, String pageOffset, List<Rest> restList) {
         this.attributes = attributes;
         this.totalHitCount = totalHitCount;
         this.hitPerPage = hitPerPage;
         this.pageOffset = pageOffset;
         this.restList = restList;
     }
+
 
     public ApiVersion getAttributes() {
         return attributes;
@@ -43,27 +43,27 @@ public class GurunaviResponse {
         this.attributes = attributes;
     }
 
-    public int getTotalHitCount() {
+    public String getTotalHitCount() {
         return totalHitCount;
     }
 
-    public void setTotalHitCount(int totalHitCount) {
+    public void setTotalHitCount(String totalHitCount) {
         this.totalHitCount = totalHitCount;
     }
 
-    public int getHitPerPage() {
+    public String getHitPerPage() {
         return hitPerPage;
     }
 
-    public void setHitPerPage(int hitPerPage) {
+    public void setHitPerPage(String hitPerPage) {
         this.hitPerPage = hitPerPage;
     }
 
-    public int getPageOffset() {
+    public String getPageOffset() {
         return pageOffset;
     }
 
-    public void setPageOffset(int pageOffset) {
+    public void setPageOffset(String pageOffset) {
         this.pageOffset = pageOffset;
     }
 
@@ -74,4 +74,6 @@ public class GurunaviResponse {
     public void setRestList(List<Rest> restList) {
         this.restList = restList;
     }
+
+
 }

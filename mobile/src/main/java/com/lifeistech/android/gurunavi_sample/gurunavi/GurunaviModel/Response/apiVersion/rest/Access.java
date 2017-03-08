@@ -2,11 +2,13 @@ package com.lifeistech.android.gurunavi_sample.gurunavi.GurunaviModel.Response.a
 
 import com.google.gson.annotations.SerializedName;
 
+import java.io.Serializable;
+
 /**
  * Created by Masashi Hamaguchi on 2017/02/28.
  */
 
-public class Access {
+public class Access implements Serializable {
     public String line;
     public String station;
     @SerializedName("station_exit")

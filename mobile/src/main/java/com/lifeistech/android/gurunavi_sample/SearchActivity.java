@@ -13,6 +13,7 @@ import android.widget.Spinner;
 import com.google.gson.Gson;
 import com.lifeistech.android.gurunavi_sample.adapterClass.AreaAdapter;
 import com.lifeistech.android.gurunavi_sample.adapterClass.PrefAdapter;
+import com.lifeistech.android.gurunavi_sample.gurunavi.GareaLSearchAPI.GareaLargeResponse;
 import com.lifeistech.android.gurunavi_sample.gurunavi.Gurunavi;
 import com.lifeistech.android.gurunavi_sample.gurunavi.GurunaviConnect;
 import com.lifeistech.android.gurunavi_sample.gurunavi.GurunaviRetrofit;
@@ -29,7 +30,9 @@ public class SearchActivity extends AppCompatActivity {
 
     EditText editText;
     Spinner areaSpinner;
-    ListView listView;
+    Spinner prefSpinner;
+    Spinner areaLSpinner;
+
 
     static AreaAdapter areaAdapter;
     static PrefAdapter prefAdapter;
@@ -52,7 +55,8 @@ public class SearchActivity extends AppCompatActivity {
 
         editText = (EditText) findViewById(R.id.editText);
         areaSpinner = (Spinner) findViewById(R.id.areaSpinner);
-        listView = (ListView) findViewById(R.id.listView);
+        prefSpinner = (Spinner) findViewById(R.id.prefSpinner);
+        areaLSpinner = (Spinner) findViewById(R.id.areaLSpinner);
 
         //エリアを取得
         areaSearch();
@@ -78,7 +82,7 @@ public class SearchActivity extends AppCompatActivity {
                 Gson gson = new Gson();
                 AreaResponse areaResponse = gson.fromJson(json, AreaResponse.class);
 
-                Log.d("TAG", areaResponse.getAreaList().get(0).getArea_name().toString());
+                Log.d("TAG", areaResponse.getAreaList().get(0).getArea_name());
                 Log.d("TAG", "Areasuccess!!!!!");
 
                 //とりだす
@@ -88,7 +92,7 @@ public class SearchActivity extends AppCompatActivity {
                 areaAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                 areaSpinner.setAdapter(areaAdapter);
 
-//                Log.d("TAG", areas.get(0));
+                Log.d("TAG", prefs.get(0).toString());
 
             }
 
@@ -119,14 +123,15 @@ public class SearchActivity extends AppCompatActivity {
                 Gson gson = new Gson();
                 PrefResponse prefResponse = gson.fromJson(json, PrefResponse.class);
 
-//                Log.d("TAG", prefResponse.getPrefList().get(0).getPref_name().toString());
+                Log.d("TAG", prefResponse.getPrefList().get(0).getPref_name());
                 Log.d("TAG", "PrefSuccess!!!!!");
 
                 //とりだす
                 prefs.addAll(prefResponse.getPrefList());
 
                 prefAdapter = new PrefAdapter(getApplicationContext(), R.layout.area_list, prefs);
-                listView.setAdapter(prefAdapter);
+                prefAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                prefSpinner.setAdapter(prefAdapter);
 
                 Log.d("TAG", prefs.get(0).toString());
 
@@ -142,6 +147,10 @@ public class SearchActivity extends AppCompatActivity {
 
     }
 
+
+
+
+    //検索ボタン
     public void search(View v) {
 
         if (editText.length() != 0) {
