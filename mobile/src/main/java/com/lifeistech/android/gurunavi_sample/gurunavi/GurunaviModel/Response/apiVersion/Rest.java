@@ -23,9 +23,9 @@ public class Rest {
     public String name;
     @SerializedName("name_kana")
     public String nameKana;
-    public Double latitude;
+    public String latitude;
 
-    public Double longitude;
+    public String longitude;
     public String category;
     public String url;
     @SerializedName("url_mobile")
@@ -49,9 +49,9 @@ public class Rest {
     public PR pr;
 
     public Code code;
-    public int budget;
+    public String budget;
     public String party;
-    public int lunch;
+    public String lunch;
     @SerializedName("credit_card")
     public String creditCard;
 
@@ -59,7 +59,7 @@ public class Rest {
     public String eMoney;
     public Flags flags;
 
-    public Rest(Order attributes, String id, String updateDate, String name, String nameKana, Double latitude, Double longitude, String category, String url, String urlMobile, CouponURL couponURL, ImageURL imageURL, String address, String tel, String telSub, String fax, String opentime, String holiday, Access access, String parkingLots, PR pr, Code code, int budget, String party, int lunch, String creditCard, String eMoney, Flags flags) {
+    public Rest(Order attributes, String id, String updateDate, String name, String nameKana, String latitude, String longitude, String category, String url, String urlMobile, CouponURL couponURL, ImageURL imageURL, String address, String tel, String telSub, String fax, String opentime, String holiday, Access access, String parkingLots, PR pr, Code code, String budget, String party, String lunch, String creditCard, String eMoney, Flags flags) {
         this.attributes = attributes;
         this.id = id;
         this.updateDate = updateDate;
@@ -130,19 +130,19 @@ public class Rest {
         this.nameKana = nameKana;
     }
 
-    public Double getLatitude() {
+    public String getLatitude() {
         return latitude;
     }
 
-    public void setLatitude(Double latitude) {
+    public void setLatitude(String latitude) {
         this.latitude = latitude;
     }
 
-    public Double getLongitude() {
+    public String getLongitude() {
         return longitude;
     }
 
-    public void setLongitude(Double longitude) {
+    public void setLongitude(String longitude) {
         this.longitude = longitude;
     }
 
@@ -266,11 +266,11 @@ public class Rest {
         this.code = code;
     }
 
-    public int getBudget() {
+    public String getBudget() {
         return budget;
     }
 
-    public void setBudget(int budget) {
+    public void setBudget(String budget) {
         this.budget = budget;
     }
 
@@ -282,11 +282,11 @@ public class Rest {
         this.party = party;
     }
 
-    public int getLunch() {
+    public String getLunch() {
         return lunch;
     }
 
-    public void setLunch(int lunch) {
+    public void setLunch(String lunch) {
         this.lunch = lunch;
     }
 
