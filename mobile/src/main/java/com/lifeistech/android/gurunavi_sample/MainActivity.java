@@ -26,7 +26,7 @@ public class MainActivity extends Activity {
     static ArrayList<Rest> rests = new ArrayList<Rest>();
     private final String keyId = "9ffa01190536dce72adf62e5fba762be";
     private final String format = "json";
-    private final String freeword = "喫茶";
+    private final String freeword = "";
 
 
     //コネクタ
@@ -103,12 +103,13 @@ public class MainActivity extends Activity {
 
     public void detail(int position) {
 
-//        Intent intent = new Intent(this, DetailActivity.class);
-        Log.d("tag", listView.getItemAtPosition(position).getClass().getResource());
-//        intent.putExtra("name", listView.getItemAtPosition(position).getClass().getName());
-//        intent.putExtra("address", listView.getItemAtPosition(position).getClass().getAddress());
-//        intent.putExtra("pr", listView.getItemAtPosition(position).getClass().getPr().getPr_Long());
-//        startActivity(intent);
+        Intent intent = new Intent(this, DetailActivity.class);
+        Rest rest = (Rest) listView.getAdapter().getItem(position);
+        Log.d("tag",rest.getImageURL().getShopImage1());
+        intent.putExtra("name",rest.getName());
+        intent.putExtra("address", rest.getAddress());
+        intent.putExtra("pr", rest.getPr().getPr_Long());
+        startActivity(intent);
         Log.d("TAG", "ID" + position);
 
     }

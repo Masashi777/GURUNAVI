@@ -8,41 +8,39 @@ import com.google.gson.annotations.SerializedName;
 
 public class Flags {
     @SerializedName("mobile_site")
-    public int mobileSite;
+    public String mobileSite;
     @SerializedName("mobile_coupon")
-    public int mobileCoupon;
+    public String mobileCoupon;
     @SerializedName("pc_coupon")
-    public int pcCoupon;
+    public String pcCoupon;
 
-
-    public Flags(int mobileSite, int mobileCoupon, int pcCoupon) {
+    public Flags(String mobileSite, String mobileCoupon, String pcCoupon) {
         this.mobileSite = mobileSite;
         this.mobileCoupon = mobileCoupon;
         this.pcCoupon = pcCoupon;
     }
 
-
-    public int getMobileSite() {
+    public String getMobileSite() {
         return mobileSite;
     }
 
-    public void setMobileSite(int mobileSite) {
+    public void setMobileSite(String mobileSite) {
         this.mobileSite = mobileSite;
     }
 
-    public int getMobileCoupon() {
+    public String getMobileCoupon() {
         return mobileCoupon;
     }
 
-    public void setMobileCoupon(int mobileCoupon) {
+    public void setMobileCoupon(String mobileCoupon) {
         this.mobileCoupon = mobileCoupon;
     }
 
-    public int getPcCoupon() {
+    public String getPcCoupon() {
         return pcCoupon;
     }
 
-    public void setPcCoupon(int pcCoupon) {
+    public void setPcCoupon(String pcCoupon) {
         this.pcCoupon = pcCoupon;
     }
 }

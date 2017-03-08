@@ -3,18 +3,12 @@ package com.lifeistech.android.gurunavi_sample;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentActivity;
-import android.support.v4.media.session.MediaControllerCompat;
-import android.support.v7.app.AppCompatActivity;
-import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapFragment;
-import com.google.android.gms.maps.MapView;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
@@ -40,7 +34,7 @@ public class DetailActivity extends Activity implements OnMapReadyCallback {
         setContentView(R.layout.activity_detail);
 
         //ひもづけ
-        imageView = (ImageView) findViewById(R.id.imageView);
+        imageView = (ImageView) findViewById(R.id.imageView2);
         nameText = (TextView) findViewById(R.id.nameText);
         addressText = (TextView) findViewById(R.id.addressText);
         prText = (TextView) findViewById(R.id.prText);
