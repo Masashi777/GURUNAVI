@@ -103,7 +103,7 @@ public class MainActivity extends Activity {
 
     public void detail(int position) {
 
-        Intent intent = new Intent(this, ScrollingActivity.class);
+        Intent intent = new Intent(this, DetailActivity.class);
         Rest rest = (Rest) listView.getAdapter().getItem(position);
         intent.putExtra("rest", rest);
         intent.setAction(Intent.ACTION_VIEW);

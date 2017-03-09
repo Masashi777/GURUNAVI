@@ -92,7 +92,7 @@ public class SearchActivity extends AppCompatActivity {
                 areaAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                 areaSpinner.setAdapter(areaAdapter);
 
-                Log.d("TAG", prefs.get(0).toString());
+//                Log.d("TAG", prefs.get(0).toString());
 
             }
 
