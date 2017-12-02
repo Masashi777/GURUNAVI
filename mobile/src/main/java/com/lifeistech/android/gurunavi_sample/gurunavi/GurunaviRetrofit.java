@@ -21,6 +21,13 @@ import retrofit.http.Query;
 
 public class GurunaviRetrofit extends GurunaviConnect {
 
+    // info
+
+    private final String keyId = "198d3912d63f7394f59748a3a797e742";
+    private final String format = "json";
+
+    // Service
+
     public interface GurunaviApiService {
 
         @GET("/")
@@ -46,6 +53,7 @@ public class GurunaviRetrofit extends GurunaviConnect {
         public void search(@Query("keyid") String keyId,
                            @Query("format") String format,
                            @Query("freeword") String freeWord,
+                           @Query("offset_page") Integer page,
                            Callback<Response> callback);
 
     }
@@ -106,7 +114,7 @@ public class GurunaviRetrofit extends GurunaviConnect {
 
         GurunaviApiService service = restAdapter.create(GurunaviApiService.class);
 
-        service.prefSearch(keyId, format, lang, new Callback<Response>() {
+        service.prefSearch(keyId, format, lang,  new Callback<Response>() {
             @Override
             public void success(Response gurunaviResponse, Response response) {
 
@@ -191,8 +199,11 @@ public class GurunaviRetrofit extends GurunaviConnect {
 
 
 
-    //お店検索
-    public void search(final String keyId, final  String format, final String freeWord, final GurunaviSearchListener listener) {
+    // お店検索
+
+
+
+    public void search(final String freeWord, final Integer page, final GurunaviSearchListener listener) {
         RestAdapter restAdapter = new RestAdapter.Builder()
                 .setEndpoint(REQUEST_DOMAIN)
                 .setLogLevel(RestAdapter.LogLevel.FULL)
@@ -200,11 +211,9 @@ public class GurunaviRetrofit extends GurunaviConnect {
 
         GurunaviApiService service = restAdapter.create(GurunaviApiService.class);
 
-        service.search(keyId, format, freeWord, new Callback<Response>() {
+        service.search(keyId, format, freeWord, page, new Callback<Response>() {
             @Override
             public void success(Response gurunaviResponse, Response response) {
-
-
 
                 // 結果のJsonからString型のresultを作成
                 BufferedReader reader = null;
@@ -225,14 +234,15 @@ public class GurunaviRetrofit extends GurunaviConnect {
                 }
                 String result = sb.toString();
 
-                // 結果のJsonをString型にしてGurunaviSearchListenerのonSuccessに渡す。
+                // 結果のJsonをString型にしてGurunaviSearchListenerのonSuccessに渡す
                 listener.onSuccess(result);
+
                 Log.d("TAG", "success!!!!!");
             }
 
             @Override
             public void failure(RetrofitError error) {
-                Log.d("TAG", "failed!!!!!");
+
                 Log.d("TAG", error.toString());
             }
         });

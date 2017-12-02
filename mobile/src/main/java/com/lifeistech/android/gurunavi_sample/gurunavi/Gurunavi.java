@@ -24,8 +24,8 @@ public class Gurunavi {
     }
 
 
-    public void search(GurunaviConnect connect, String keyId, String format, String freeWord, final GurunaviConnect.GurunaviSearchListener listener) {
-        connect.search(keyId, format, freeWord, listener);
+    public void search(GurunaviConnect connect, String freeWord, Integer page, final GurunaviConnect.GurunaviSearchListener listener) {
+        connect.search(freeWord, page, listener);
     }
 
 

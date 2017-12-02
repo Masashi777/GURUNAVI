@@ -30,7 +30,7 @@ public abstract class GurunaviConnect implements Serializable {
 
     public abstract void GareaLSearch(final String keyId, final String format, final String lang, final GurunaviSearchListener listener);
 
-    public abstract void search(final String keyId, final String format, final String freeWord, final GurunaviSearchListener listener);
+    public abstract void search(final String freeWord, final Integer page, final GurunaviSearchListener listener);
 
 
 }

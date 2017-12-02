@@ -51,6 +51,7 @@ public class CustomAdapter extends ArrayAdapter<Rest> {
 
             viewHolder = new ViewHolder();
             viewHolder.imageView = (ImageView) convertView.findViewById(R.id.imageView);
+            viewHolder.imageView = (ImageView) convertView.findViewById(R.id.imageView2);
 
             viewHolder.name = (TextView) convertView.findViewById(R.id.nameText);
             viewHolder.name.setTextColor(Color.BLACK);
@@ -65,7 +66,13 @@ public class CustomAdapter extends ArrayAdapter<Rest> {
             convertView.setTag(viewHolder);
         }
 
-//        Picasso.with(getContext()).load(item.getImageURL().getShopImage1()).into(viewHolder.imageView);
+        try {
+            Picasso.with(getContext()).load(item.getImageURL().getShopImage1()).into(viewHolder.imageView);
+            Picasso.with(getContext()).load(item.getImageURL().getShopImage2()).into(viewHolder.imageView2);
+        } catch (Exception e) {
+
+        }
+
         viewHolder.name.setText(item.getName());
         viewHolder.access.setText(item.getAccess().getStation() + " " + item.getAccess().getStationExit() + " 徒歩 " + item.getAccess().getWalk() + "分");
         viewHolder.budget.setText("平均予算 " + item.getBudget() + " ハーティー予算 " + item.getParty());
@@ -80,6 +87,7 @@ public class CustomAdapter extends ArrayAdapter<Rest> {
 
     static class ViewHolder {
         ImageView imageView;
+        ImageView imageView2;
 
         TextView name;
         TextView access;
