@@ -5,6 +5,7 @@
     android:id="@+id/activity_result"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#fff8dc"
     android:fitsSystemWindows="true"
     tools:context="com.lifeistech.android.gurunavi_sample.SearchActivity">
 

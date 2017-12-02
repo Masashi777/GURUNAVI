@@ -112,13 +112,13 @@ public class DetailActivity extends AppCompatActivity implements OnMapReadyCallb
         nameText.setText(rest.getName());
         addressText.setText(rest.getAddress());
 
-        budgetText.setText("平均予算 " + rest.getBudget() + " パーティー " + rest.getParty() + " ランチ " + rest.getLunch());
+        budgetText.setText("平均予算 " + rest.getBudget() + "円 パーティー " + rest.getParty() + "円 ランチ " + rest.getLunch() + "円");
         opentimeText.setText(rest.getOpentime());
-        accessText.setText(rest.getAccess().getStation() + rest.getAccess().getStationExit() + rest.getAccess().getWalk());
+        accessText.setText(rest.getAccess().getStation() + rest.getAccess().getStationExit() + " 徒歩" + rest.getAccess().getWalk() + "分");
 
         prText.setText(rest.getPr().getPrShort());
 
-        Picasso.with(this).load(rest.getImageURL().getShopImage1()).into(shopImage1);
+//        Picasso.with(this).load(rest.getImageURL().getShopImage1()).into(shopImage1);
 
         if (rest.getImageURL().getShopImage2().length() != 0) {
             Picasso.with(this).load(rest.getImageURL().getShopImage2()).into(shopImage2);

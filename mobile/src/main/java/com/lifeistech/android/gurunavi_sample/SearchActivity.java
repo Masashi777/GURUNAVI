@@ -39,7 +39,7 @@ public class SearchActivity extends AppCompatActivity {
     static ArrayList<Area> areas = new ArrayList<Area>();
     static ArrayList<Pref> prefs = new ArrayList<Pref>();
 
-    private final String keyId = "9ffa01190536dce72adf62e5fba762be";
+    private final String keyId = "198d3912d63f7394f59748a3a797e742";
     private final String format = "json";
     private final String lang = "ja";
 

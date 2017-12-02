@@ -65,7 +65,7 @@ public class CustomAdapter extends ArrayAdapter<Rest> {
             convertView.setTag(viewHolder);
         }
 
-        Picasso.with(getContext()).load(item.getImageURL().getShopImage1()).into(viewHolder.imageView);
+//        Picasso.with(getContext()).load(item.getImageURL().getShopImage1()).into(viewHolder.imageView);
         viewHolder.name.setText(item.getName());
         viewHolder.access.setText(item.getAccess().getStation() + " " + item.getAccess().getStationExit() + " 徒歩 " + item.getAccess().getWalk() + "分");
         viewHolder.budget.setText("平均予算 " + item.getBudget() + " ハーティー予算 " + item.getParty());
